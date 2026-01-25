@@ -1,0 +1,16 @@
+project_id = "ejvtczsxqavqenmmfztq"
+
+[functions.career-chat]
+verify_jwt = false
+
+[functions.analyze-resume]
+verify_jwt = false
+
+[functions.job-recommendations]
+verify_jwt = false
+
+[functions.voice-transcribe]
+verify_jwt = false
+
+[functions.realtime-chat]
+verify_jwt = false
