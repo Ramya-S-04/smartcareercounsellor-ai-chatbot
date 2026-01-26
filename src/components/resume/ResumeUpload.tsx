@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { Upload, FileText, Loader2, CheckCircle, AlertCircle, Trash2, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/useAuth";
+import { Button } from "../ui/button";
+import { Card } from "../ui/card";
+import { supabase } from "../../integrations/supabase/client";
+import { useAuth } from "../../hooks/useAuth";
 import { toast } from "sonner";
 import {
   AlertDialog,
@@ -14,7 +14,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from "../ui/alert-dialog";
 
 interface Resume {
   id: string;
