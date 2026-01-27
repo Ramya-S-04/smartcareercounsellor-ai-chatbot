@@ -1,9 +1,9 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { Card } from "../ui/card";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card } from "@/components/ui/card";
 import { BrainCircuit, Lock, User } from "lucide-react";
 
 interface LoginModalProps {
@@ -16,7 +16,7 @@ export const LoginModal = ({ open, onOpenChange }: LoginModalProps) => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = async (e: FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
@@ -59,7 +59,7 @@ export const LoginModal = ({ open, onOpenChange }: LoginModalProps) => {
                     id="username"
                     type="text"
                     value={username}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+                    onChange={(e) => setUsername(e.target.value)}
                     placeholder="Enter your username"
                     className="pl-10 h-12 bg-background/50 border-border/50 focus:border-primary transition-smooth"
                     required
@@ -77,7 +77,7 @@ export const LoginModal = ({ open, onOpenChange }: LoginModalProps) => {
                     id="password"
                     type="password"
                     value={password}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
                     className="pl-10 h-12 bg-background/50 border-border/50 focus:border-primary transition-smooth"
                     required

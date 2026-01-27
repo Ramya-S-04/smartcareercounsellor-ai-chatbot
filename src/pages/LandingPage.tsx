@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../components/ui/button";
-import { Card } from "../components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { BrainCircuit, Users, TrendingUp, Star, MessageCircle, FileText, Target, Sparkles } from "lucide-react";
-import heroImage from "../assets/hero-career-counsellor.jpg";
+import heroImage from "@/assets/hero-career-counsellor.jpg";
 
 const LandingPage = () => {
   const navigate = useNavigate();

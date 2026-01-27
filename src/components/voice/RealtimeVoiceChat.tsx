@@ -1,11 +1,11 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
-import { ScrollArea } from "../ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Mic, MicOff, Phone, PhoneOff, Volume2, VolumeX, Loader2, Bot, User as UserIcon } from "lucide-react";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-import { AudioRecorder, AudioQueue, encodeAudioForAPI, createWavFromPCM } from "../../utils/RealtimeAudio";
+import { AudioRecorder, AudioQueue, encodeAudioForAPI, createWavFromPCM } from "@/utils/RealtimeAudio";
 
 interface Message {
   id: string;

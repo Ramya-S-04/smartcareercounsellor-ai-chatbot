@@ -1,11 +1,11 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { Card } from "../ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
-import { Textarea } from "../ui/textarea";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { BrainCircuit, User, Mail, Lock, GraduationCap, Briefcase, Target } from "lucide-react";
 
 interface SignUpModalProps {
@@ -34,7 +34,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
@@ -79,7 +79,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                     <Input
                       id="firstName"
                       value={formData.firstName}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("firstName", e.target.value)}
+                      onChange={(e) => handleInputChange("firstName", e.target.value)}
                       placeholder="John"
                       className="h-10 bg-background/50 border-border/50 focus:border-primary"
                       required
@@ -91,7 +91,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                     <Input
                       id="lastName"
                       value={formData.lastName}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("lastName", e.target.value)}
+                      onChange={(e) => handleInputChange("lastName", e.target.value)}
                       placeholder="Doe"
                       className="h-10 bg-background/50 border-border/50 focus:border-primary"
                       required
@@ -108,7 +108,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                         id="email"
                         type="email"
                         value={formData.email}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("email", e.target.value)}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
                         placeholder="john@example.com"
                         className="pl-10 h-10 bg-background/50 border-border/50 focus:border-primary"
                         required
@@ -122,7 +122,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                       id="phone"
                       type="tel"
                       value={formData.phone}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("phone", e.target.value)}
+                      onChange={(e) => handleInputChange("phone", e.target.value)}
                       placeholder="+1 (555) 123-4567"
                       className="h-10 bg-background/50 border-border/50 focus:border-primary"
                     />
@@ -140,7 +140,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="education" className="text-sm font-medium">Education Level</Label>
-                    <Select onValueChange={(value: string) => handleInputChange("education", value)}>
+                    <Select onValueChange={(value) => handleInputChange("education", value)}>
                       <SelectTrigger className="h-10 bg-background/50 border-border/50">
                         <SelectValue placeholder="Select education level" />
                       </SelectTrigger>
@@ -156,7 +156,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                   
                   <div className="space-y-2">
                     <Label htmlFor="experience" className="text-sm font-medium">Years of Experience</Label>
-                    <Select onValueChange={(value: string) => handleInputChange("experience", value)}>
+                    <Select onValueChange={(value) => handleInputChange("experience", value)}>
                       <SelectTrigger className="h-10 bg-background/50 border-border/50">
                         <SelectValue placeholder="Select experience level" />
                       </SelectTrigger>
@@ -175,7 +175,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                   <Input
                     id="currentRole"
                     value={formData.currentRole}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("currentRole", e.target.value)}
+                    onChange={(e) => handleInputChange("currentRole", e.target.value)}
                     placeholder="e.g., Software Engineer, Student, Marketing Manager"
                     className="h-10 bg-background/50 border-border/50 focus:border-primary"
                   />
@@ -186,7 +186,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                   <Textarea
                     id="careerGoals"
                     value={formData.careerGoals}
-                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) => handleInputChange("careerGoals", e.target.value)}
+                    onChange={(e) => handleInputChange("careerGoals", e.target.value)}
                     placeholder="Describe your career aspirations and goals..."
                     className="bg-background/50 border-border/50 focus:border-primary min-h-[80px]"
                     rows={3}
@@ -198,7 +198,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                   <Textarea
                     id="skills"
                     value={formData.skills}
-                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) => handleInputChange("skills", e.target.value)}
+                    onChange={(e) => handleInputChange("skills", e.target.value)}
                     placeholder="List your key skills, separated by commas..."
                     className="bg-background/50 border-border/50 focus:border-primary min-h-[60px]"
                     rows={2}
@@ -219,7 +219,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                     <Input
                       id="username"
                       value={formData.username}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("username", e.target.value)}
+                      onChange={(e) => handleInputChange("username", e.target.value)}
                       placeholder="Choose a username"
                       className="h-10 bg-background/50 border-border/50 focus:border-primary"
                       required
@@ -233,7 +233,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                         id="password"
                         type="password"
                         value={formData.password}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("password", e.target.value)}
+                        onChange={(e) => handleInputChange("password", e.target.value)}
                         placeholder="Create a password"
                         className="h-10 bg-background/50 border-border/50 focus:border-primary"
                         required
@@ -246,7 +246,7 @@ export const SignUpModal = ({ open, onOpenChange }: SignUpModalProps) => {
                         id="confirmPassword"
                         type="password"
                         value={formData.confirmPassword}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange("confirmPassword", e.target.value)}
+                        onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
                         placeholder="Confirm password"
                         className="h-10 bg-background/50 border-border/50 focus:border-primary"
                         required

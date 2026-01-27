@@ -1,12 +1,12 @@
 import { useState, useCallback } from "react";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { Badge } from "../ui/badge";
-import { ScrollArea } from "../ui/scroll-area";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Progress } from "../ui/progress";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Progress } from "@/components/ui/progress";
 import { 
   Briefcase, 
   Play, 
@@ -21,10 +21,10 @@ import {
   Clock,
   Trophy
 } from "lucide-react";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-import { supabase } from "../../integrations/supabase/client";
-import { useAuth } from "../../hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
 interface InterviewQuestion {
   id: string;
@@ -342,7 +342,7 @@ Provide feedback in exactly this JSON format, no other text:
                     <label className="text-sm font-medium text-foreground">Select Role</label>
                     <Select 
                       value={session.role} 
-                      onValueChange={(value: string) => setSession(prev => ({ ...prev, role: value }))}
+                      onValueChange={(value) => setSession(prev => ({ ...prev, role: value }))}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Choose a role" />
@@ -359,7 +359,7 @@ Provide feedback in exactly this JSON format, no other text:
                       <Input
                         placeholder="Enter your custom role"
                         value={customRole}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCustomRole(e.target.value)}
+                        onChange={(e) => setCustomRole(e.target.value)}
                         className="mt-2"
                       />
                     )}
@@ -439,7 +439,7 @@ Provide feedback in exactly this JSON format, no other text:
                   <Textarea
                     placeholder="Type your answer here... Be specific and provide examples where possible."
                     value={currentAnswer}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setCurrentAnswer(e.target.value)}
+                    onChange={(e) => setCurrentAnswer(e.target.value)}
                     className="min-h-[200px]"
                     disabled={isEvaluating}
                   />

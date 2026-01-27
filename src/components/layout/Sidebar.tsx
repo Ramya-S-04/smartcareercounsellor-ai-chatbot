@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
-import { Separator } from "../ui/separator";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { 
   User, 
   MessageCircle, 
@@ -14,8 +14,8 @@ import {
   Briefcase,
   GraduationCap
 } from "lucide-react";
-import { cn } from "../../lib/utils";
-import { useAuth } from "../../hooks/useAuth";
+import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
 
 interface SidebarProps {
   open: boolean;

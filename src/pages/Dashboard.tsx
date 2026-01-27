@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BrainCircuit, Menu } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Sidebar } from "../components/layout/Sidebar";
-import { ChatInterface } from "../components/chat/ChatInterface";
-import { ResumeUpload } from "../components/resume/ResumeUpload";
-import { SkillAssessment } from "../components/assessment/SkillAssessment";
-import { UserProfile } from "../components/profile/UserProfile";
-import { CareerPathVisualization } from "../components/career/CareerPathVisualization";
-import { JobRecommendations } from "../components/jobs/JobRecommendations";
-import { InterviewPrep } from "../components/interview/InterviewPrep";
-import { useAuth } from "../hooks/useAuth";
+import { Button } from "@/components/ui/button";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { ChatInterface } from "@/components/chat/ChatInterface";
+import { ResumeUpload } from "@/components/resume/ResumeUpload";
+import { SkillAssessment } from "@/components/assessment/SkillAssessment";
+import { UserProfile } from "@/components/profile/UserProfile";
+import { CareerPathVisualization } from "@/components/career/CareerPathVisualization";
+import { JobRecommendations } from "@/components/jobs/JobRecommendations";
+import { InterviewPrep } from "@/components/interview/InterviewPrep";
+import { useAuth } from "@/hooks/useAuth";
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

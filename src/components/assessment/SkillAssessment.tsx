@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { CheckCircle, Code, Users, TrendingUp, ArrowRight, Trophy, RotateCcw } from "lucide-react";
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
-import { Progress } from "../ui/progress";
-import { skillAssessments, AssessmentCategory, Question } from "../../data/skillAssessmentQuestions";
-import { supabase } from "../../integrations/supabase/client";
-import { useAuth } from "../../hooks/useAuth";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { skillAssessments, AssessmentCategory, Question } from "@/data/skillAssessmentQuestions";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 
 interface AssessmentResult {
@@ -53,7 +53,7 @@ export const SkillAssessment = () => {
     if (error) {
       console.error("Error fetching results:", error);
     } else if (data) {
-      const results: AssessmentResult[] = data.map((item: any) => ({
+      const results: AssessmentResult[] = data.map((item) => ({
         category: item.category,
         score: item.score,
         total: item.total_questions,
@@ -90,7 +90,7 @@ export const SkillAssessment = () => {
   const finishAssessment = async () => {
     if (!selectedCategory || !user) return;
 
-    const score = selectedCategory.questions.reduce((acc: number, q: Question) => {
+    const score = selectedCategory.questions.reduce((acc, q) => {
       return acc + (answers[q.id] === q.correctAnswer ? 1 : 0);
     }, 0);
 
@@ -129,7 +129,7 @@ export const SkillAssessment = () => {
 
   // Results view
   if (showResults && selectedCategory) {
-    const score = selectedCategory.questions.reduce((acc: number, q: Question) => {
+    const score = selectedCategory.questions.reduce((acc, q) => {
       return acc + (answers[q.id] === q.correctAnswer ? 1 : 0);
     }, 0);
     const percentage = Math.round((score / selectedCategory.questions.length) * 100);
@@ -167,7 +167,7 @@ export const SkillAssessment = () => {
 
           <div className="space-y-4 text-left mb-8">
             <h4 className="font-semibold">Review your answers:</h4>
-            {selectedCategory.questions.map((q: Question, idx: number) => (
+            {selectedCategory.questions.map((q, idx) => (
               <div key={q.id} className="p-4 bg-background/50 rounded-xl">
                 <p className="font-medium text-sm mb-2">
                   {idx + 1}. {q.question}
@@ -217,7 +217,7 @@ export const SkillAssessment = () => {
           <h2 className="text-xl font-bold mb-6">{currentQuestion.question}</h2>
 
           <div className="space-y-3 mb-8">
-            {currentQuestion.options.map((option: string, idx: number) => (
+            {currentQuestion.options.map((option, idx) => (
               <button
                 key={idx}
                 onClick={() => handleAnswer(currentQuestion.id, idx)}
@@ -274,7 +274,7 @@ export const SkillAssessment = () => {
       </p>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {skillAssessments.map((category: AssessmentCategory) => {
+        {skillAssessments.map((category) => {
           const lastResult = previousResults.find((r) => r.category === category.name);
           
           return (
