@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Card } from "../ui/card";
+import { ScrollArea } from "../ui/scroll-area";
 import { Send, Bot, User as UserIcon, LogIn, Plus, MessageSquare, Trash2, Clock, Mic, MicOff, ImagePlus, X, Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useAuth } from "@/hooks/useAuth";
+import { cn } from "../../lib/utils";
+import { useAuth } from "../../hooks/useAuth";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "../../integrations/supabase/client";
 
 interface Message {
   id: string;
@@ -104,7 +104,7 @@ export const ChatInterface = () => {
       return;
     }
     
-    const loadedMessages: Message[] = data.map((msg) => ({
+    const loadedMessages: Message[] = (data as any[]).map((msg: any) => ({
       id: msg.id,
       content: msg.content,
       sender: msg.role === "user" ? "user" : "bot",
@@ -537,7 +537,7 @@ export const ChatInterface = () => {
                       variant="ghost"
                       size="sm"
                       className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100"
-                      onClick={(e) => {
+                      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                         e.stopPropagation();
                         deleteConversation(conv.id);
                       }}
@@ -724,7 +724,7 @@ export const ChatInterface = () => {
                 
                 <Input
                   value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me about your career goals, skill development, job search tips..."
                   className="flex-1 bg-background/50 border-border/50 focus:border-primary h-11"
