@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/useAuth";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { Progress } from "../ui/progress";
+import { useToast } from "../../hooks/use-toast";
+import { supabase } from "../../integrations/supabase/client";
+import { useAuth } from "../../hooks/useAuth";
 import { 
   TrendingUp, 
   Briefcase, 
@@ -227,7 +227,7 @@ export const CareerPathVisualization = () => {
 
         if (assessments) {
           const scores: Record<string, number> = {};
-          assessments.forEach((a) => {
+          assessments.forEach((a: any) => {
             if (!scores[a.category] || a.score > scores[a.category]) {
               scores[a.category] = Math.round((a.score / a.total_questions) * 100);
             }
