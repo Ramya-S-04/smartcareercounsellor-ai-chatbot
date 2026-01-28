@@ -5,7 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/smartcareercounsellor-ai-chatbot/",
+  // Use base path only for production builds (e.g., GitHub Pages).
+  // In local dev/preview it must stay at root, otherwise assets and HMR can break.
+  base: mode === "production" ? "/smartcareercounsellor-ai-chatbot/" : "/",
   server: {
     host: "::",
     port: 8080,
