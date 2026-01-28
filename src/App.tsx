@@ -11,13 +11,16 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Use basename only in production (GitHub Pages), not in development/preview
+const basename = import.meta.env.PROD ? "/smartcareercounsellor-ai-chatbot" : "";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/smartcareercounsellor-ai-chatbot">
+        <BrowserRouter basename={basename}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<Auth />} />
