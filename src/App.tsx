@@ -17,7 +17,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename="/smartcareercounsellor-ai-chatbot">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<Auth />} />
