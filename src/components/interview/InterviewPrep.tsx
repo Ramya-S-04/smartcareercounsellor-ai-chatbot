@@ -228,6 +228,7 @@ Provide feedback in exactly this JSON format, no other text:
 
       const cleaned = fullContent.replace(/```(?:json)?\s*/g, "").replace(/```/g, "");
       const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
         const evaluation = JSON.parse(jsonMatch[0]);
         
         const newResponse: InterviewResponse = {
