@@ -142,8 +142,9 @@ Include a mix of behavioral, technical, and situational questions appropriate fo
         }
       }
 
-      // Extract JSON from response
-      const jsonMatch = fullContent.match(/\[[\s\S]*\]/);
+      // Extract JSON from response - handle markdown code blocks
+      const cleaned = fullContent.replace(/```(?:json)?\s*/g, "").replace(/```/g, "");
+      const jsonMatch = cleaned.match(/\[[\s\S]*\]/);
       if (jsonMatch) {
         const questions = JSON.parse(jsonMatch[0]) as InterviewQuestion[];
         setSession(prev => ({

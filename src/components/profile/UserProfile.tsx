@@ -92,11 +92,11 @@ export const UserProfile = () => {
     try {
       const { error } = await supabase
         .from("profiles")
-        .update({
+        .upsert({
           ...data,
           skills,
-        })
-        .eq("user_id", user.id);
+          user_id: user.id,
+        }, { onConflict: "user_id" });
 
       if (error) throw error;
 

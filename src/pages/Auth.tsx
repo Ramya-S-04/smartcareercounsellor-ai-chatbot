@@ -91,8 +91,9 @@ const Auth = () => {
     setIsLoading(true);
 
     try {
+      const basePath = import.meta.env.PROD ? "/smartcareercounsellor-ai-chatbot" : "";
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/auth?mode=reset`,
+        redirectTo: `${window.location.origin}${basePath}/auth?mode=reset`,
       });
 
       if (error) {
