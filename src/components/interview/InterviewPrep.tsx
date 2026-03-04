@@ -226,8 +226,8 @@ Provide feedback in exactly this JSON format, no other text:
         }
       }
 
-      const jsonMatch = fullContent.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
+      const cleaned = fullContent.replace(/```(?:json)?\s*/g, "").replace(/```/g, "");
+      const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
         const evaluation = JSON.parse(jsonMatch[0]);
         
         const newResponse: InterviewResponse = {
