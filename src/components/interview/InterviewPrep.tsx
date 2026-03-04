@@ -210,22 +210,25 @@ Provide feedback in exactly this JSON format, no other text:
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let fullContent = "";
+      let textBuffer = "";
 
       while (reader) {
         const { done, value } = await reader.read();
         if (done) break;
         
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split("\n");
+        textBuffer += decoder.decode(value, { stream: true });
         
-        for (const line of lines) {
-          if (line.startsWith("data: ") && !line.includes("[DONE]")) {
-            try {
-              const json = JSON.parse(line.slice(6));
-              const content = json.choices?.[0]?.delta?.content;
-              if (content) fullContent += content;
-            } catch {}
-          }
+        let newlineIndex: number;
+        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
+          let line = textBuffer.slice(0, newlineIndex);
+          textBuffer = textBuffer.slice(newlineIndex + 1);
+          if (line.endsWith("\r")) line = line.slice(0, -1);
+          if (!line.startsWith("data: ") || line.includes("[DONE]")) continue;
+          try {
+            const json = JSON.parse(line.slice(6));
+            const content = json.choices?.[0]?.delta?.content;
+            if (content) fullContent += content;
+          } catch {}
         }
       }
 
