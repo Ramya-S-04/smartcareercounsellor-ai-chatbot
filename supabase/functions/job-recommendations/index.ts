@@ -29,12 +29,12 @@ For each job recommendation, provide:
 3. Match Score (1-100 based on how well it fits the user's profile)
 4. Key Requirements (3-4 bullet points)
 5. Why It's a Good Fit (1-2 sentences)
-6. Estimated Salary Range
+6. Estimated Salary Range in Indian Rupees (INR) per annum (e.g., "₹8,00,000 - ₹15,00,000 per annum"). Always use the ₹ symbol and Indian numbering format (lakhs/crores).
 7. Growth Potential (Low/Medium/High)
 
 Format your response as a valid JSON array with objects containing: title, companyType, matchScore, requirements (array), whyGoodFit, salaryRange, growthPotential.
 
-Be specific and realistic based on the user's experience level and skills.`;
+Be specific and realistic based on the user's experience level and skills. All salary ranges MUST be in Indian Rupees (₹).`;
 
     const userPrompt = `Generate job recommendations for this candidate:
 
